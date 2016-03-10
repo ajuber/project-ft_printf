@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/08 16:42:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/10 14:58:39 by ajubert          ###   ########.fr       */
+/*   Created: 2016/03/10 13:09:55 by ajubert           #+#    #+#             */
+/*   Updated: 2016/03/10 15:57:03 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft.h"
-# include <stdarg.h>
-
-typedef struct		s_lst
+int main()
 {
-	char			*str;
-	int				size;
-	struct s_lst	*next;
-}					t_lst;
-
-int		ft_printf(const char *format, ...);
-
-#endif
+	ft_printf("salut comment va %s bien et toi %d moi bof %c gkr;ehw %c", "fgjd;", 23, 'j', 'h');
+	return (0);
+}
