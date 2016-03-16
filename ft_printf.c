@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:23:15 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/15 18:23:31 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/16 15:26:12 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_lst	*pre_calc(const char *format, va_list vl, int *i, t_lst *list)
 	int		result;
 	int		quot;
 	int		reste;
+	t_lst	*tmp1;
 
 	j = *i;
 	str = NULL;
@@ -90,34 +91,43 @@ t_lst	*pre_calc(const char *format, va_list vl, int *i, t_lst *list)
 	str = ft_memalloc(*i + 1);
 	str = ft_memcpy(str, &format[j], *i - j);
 	ft_list_push_back(&list, str);
-	if (format[*i] == '%' && format[*i + 1] == '%')
+	if (format[*i] == '%')
+		*i += 1;
+	if (format[*i] == '%')
 	{
 		ft_list_push_back(&list, "%");
-		*i += 1;
 	}
-	else if (format[*i + 1] == 'c')
+	else if (format[*i] == 'c')
 	{
 		c = va_arg(vl, int);
-		str = ft_memalloc(2);
-		str[0] = c;
-		ft_list_push_back(&list, str);
-		*i += 1;
+		if (c == 0)
+		{
+			ft_list_push_back(&list, str);
+			tmp1 = list;
+			while (tmp1->next != NULL)
+				tmp1 = tmp1->next;
+			tmp1->size = 1;
+		}
+		else
+		{
+			str = ft_memalloc(2);
+			str[0] = c;
+			ft_list_push_back(&list, str);
+		}
 	}
-	else if (format[*i + 1] == 's')
+	else if (format[*i] == 's')
 	{
 		tmp = str;
 		str = ft_strdup(va_arg(vl, char *));
 		//free(tmp);
 		ft_list_push_back(&list, str);
-		*i += 1;
 	}
-	else if (format[*i + 1] == 'd' || format[*i + 1] == 'i')
+	else if (format[*i] == 'd' || format[*i] == 'i')
 	{
 		tmp = str;
 		str = ft_strdup(ft_itoa((va_arg(vl, int))));
 		//free(tmp);
 		ft_list_push_back(&list, str);
-		*i += 1;
 	}/*
 	else if (format[*i + 1] == 'p')
 	{
@@ -126,11 +136,10 @@ t_lst	*pre_calc(const char *format, va_list vl, int *i, t_lst *list)
 		ft_list_push_back(&list, str);
 		*i += 1;
 	}*/
-	else if (format[*i + 1] == 'o')
+	else if (format[*i] == 'o')
 	{
 		result = 0;
 		quot = va_arg(vl, int);
-		ft_putnbr(reste);
 		j = 0;
 		while (quot > 0)
 		{
@@ -141,7 +150,6 @@ t_lst	*pre_calc(const char *format, va_list vl, int *i, t_lst *list)
 		}
 		str = ft_strdup(ft_itoa(result));
 		ft_list_push_back(&list, str);
-		*i += 1;
 	}
 	return (list);
 }

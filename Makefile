@@ -5,51 +5,55 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/03/05 14:28:27 by ajubert           #+#    #+#              #
-#    Updated: 2016/03/10 17:53:20 by ajubert          ###   ########.fr        #
+#    Created: 2015/12/14 16:33:50 by ajubert           #+#    #+#              #
+#    Updated: 2016/03/16 13:54:29 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=		libftprintf.a
 
 COMPILER=	gcc
-FLAG=		-Wall -Werror -Wextra
-LIB=		libft.a
-INCLUDES=	-I ./libft/includes/
+FLAGS=		-Wall -Wextra -Werror -c
+INCLUDES=	-I ./includes
 
-SRC_C=	ft_printf.c
+SRC_C=		ft_memset.c		ft_bzero.c		ft_memcpy.c\
+			ft_memccpy.c	ft_memmove.c	ft_memchr.c\
+			ft_memcmp.c		ft_strlen.c		ft_strcpy.c\
+			ft_strncpy.c	ft_strcat.c		ft_strncat.c\
+			ft_strlcat.c	ft_strchr.c		ft_strrchr.c\
+			ft_strstr.c		ft_strnstr.c	ft_strcmp.c\
+			ft_strncmp.c	ft_isalpha.c	ft_isdigit.c\
+			ft_isalnum.c	ft_isascii.c	ft_isprint.c\
+			ft_toupper.c	ft_tolower.c	ft_atoi.c\
+			ft_memalloc.c	ft_memdel.c		ft_strnew.c\
+			ft_strdel.c		ft_strclr.c		ft_striter.c\
+			ft_striteri.c	ft_strmap.c		ft_strmapi.c\
+			ft_strequ.c		ft_strnequ.c	ft_strdup.c\
+			ft_strsub.c		ft_strjoin.c	ft_strtrim.c\
+			ft_putchar.c	ft_putchar_fd.c	ft_putstr.c\
+			ft_putstr_fd.c	ft_putendl.c	ft_putendl_fd.c\
+			ft_strsplit.c	ft_putnbr.c		ft_putnbr_fd.c\
+			ft_itoa.c		ft_lstnew.c		ft_lstdelone.c\
+			ft_lstdel.c		ft_lstadd.c		ft_lstiter.c\
+			ft_lstmap.c		ft_lstnew_cpy.c	get_next_line.c\
+			ft_iterative_power.c			ft_printf.c\
+			ft_list.c
 
-SRC_O=		$(SRC_C:.c=.o)
+SRC_O=$(SRC_C:.c=.o)
 
-all: libft.a libft.h $(NAME)
+all: $(NAME)
 
 $(NAME): $(SRC_O)
 	ar rc $(NAME) $(SRC_O)
 	ranlib $(NAME)
-	@echo "\033[32m=======LIBFTPRINTF.A HAS BEEN CREATED=======\033[0m"
 
 %.o: %.c
-	$(COMPILER) $(FLAG) -c $<
+	$(COMPILER) $(FLAGS) $(INCLUDES) $<
 
-libft.a:
-	@echo "\033[32m==================================="
-	@echo "==========COMPILING LIBFT=========="
-	@echo "===================================\033[0m"
-	make re -C ./libft/
-	cp ./libft/libft.a .
-	make fclean -C ./libft/
-	
-libft.h:
-	cp ./libft/includes/libft.h .
-	cp ./libft/includes/get_next_line.h .
-
-clean:
-	@echo "\033[33m==========REMOVING OBJ FILES==========\033[0m"
+clean: 
 	rm -rf $(SRC_O)
 
 fclean: clean
-	@echo "\033[31m==========REMOVING BIN FILES==========\033[0m"
-	rm -rf $(NAME) libft.a
-	rm -rf $(NAME) libft.h
+	rm -rf $(NAME)
 
 re: fclean all
