@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:33:50 by ajubert           #+#    #+#              #
-#    Updated: 2016/03/16 13:54:29 by ajubert          ###   ########.fr        #
+#    Updated: 2016/03/17 22:55:55 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_C=		ft_memset.c		ft_bzero.c		ft_memcpy.c\
 			ft_lstdel.c		ft_lstadd.c		ft_lstiter.c\
 			ft_lstmap.c		ft_lstnew_cpy.c	get_next_line.c\
 			ft_iterative_power.c			ft_printf.c\
-			ft_list.c
+			ft_list_printf.c
 
 SRC_O=$(SRC_C:.c=.o)
 
