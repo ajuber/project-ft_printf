@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:23:15 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/16 15:26:12 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/17 19:20:49 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@ int		count_param(const char *format)
 {
 	int i;
 	int result;
+	int j;
 
+	j = 0;
 	result = 0;
 	i = 0;
 	while (format[i])
 	{
-		if (format[i] == '%' && format[i + 1] == '%')
+		if (format[i] == '%')
+		{
 			i++;
-		else if (format[i] == '%')
+			while (ft_isdigit(format[i]) || format[i] == ' ')
+				i++;
+		}
+		if (format[i] == '%')
+			i++;
+		else if (format[i] == 'd' || format[i] == 'c' || format[i] == 's' || format[i] == 'o')
 			result++;
 		i++;
 	}
@@ -80,23 +88,34 @@ t_lst	*pre_calc(const char *format, va_list vl, int *i, t_lst *list)
 	int		quot;
 	int		reste;
 	t_lst	*tmp1;
+	int		taille_min;
+	int		count_space;
 
 	j = *i;
 	str = NULL;
+	count_space = 0;
+	taille_min = 0;
 	while (format[*i] && format[*i] != '%')
-	{
-		//free(str);
 		*i += 1;
-	}
 	str = ft_memalloc(*i + 1);
 	str = ft_memcpy(str, &format[j], *i - j);
 	ft_list_push_back(&list, str);
 	if (format[*i] == '%')
 		*i += 1;
-	if (format[*i] == '%')
+	if (format[*i] == ' ')
+		while (format[*i] == ' ')
+		{
+			*i += 1;
+			count_space++;
+		}
+	if (ft_isdigit(format[*i]))
 	{
-		ft_list_push_back(&list, "%");
+		taille_min = ft_atoi(&format[*i]);
+		while (ft_isdigit(format[*i]))
+			*i += 1;
 	}
+	if (format[*i] == '%')
+		ft_list_push_back(&list, "%");
 	else if (format[*i] == 'c')
 	{
 		c = va_arg(vl, int);
@@ -151,6 +170,23 @@ t_lst	*pre_calc(const char *format, va_list vl, int *i, t_lst *list)
 		str = ft_strdup(ft_itoa(result));
 		ft_list_push_back(&list, str);
 	}
+	if (taille_min != 0)
+	{
+		tmp1 = list;
+		while (tmp1->next != NULL)
+			tmp1 = tmp1->next;
+		if (taille_min > tmp1->size)
+		{
+			j = 0;
+			tmp = ft_memalloc(taille_min - tmp1->size + 1);
+			while (j < taille_min - tmp1->size)
+			{
+				tmp[j] = ' ';
+				j++;
+			}
+			tmp1->str = ft_strjoin(tmp, tmp1->str);
+		}
+	}
 	return (list);
 }
 
@@ -178,8 +214,8 @@ int		ft_printf(const char *format, ...)
 			nb_param--;
 		taille_f++;
 	}
-	if (format[taille_f] != '\0')
-		list = pre_calc(format, vl, &taille_f, list);
+	//if (format[taille_f] != '\0')
+	//	list = pre_calc(format, vl, &taille_f, list);
 	tmp = list;
 	str = ft_strdup("\0");
 	while (tmp)
