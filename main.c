@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 13:09:55 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/18 00:08:49 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/18 06:11:15 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int main()
 	printf("\n");
 	//ft_putnbr(ft_printf("%c", 0));
 	ft_printf("\n");
-	printf("{%10.8d}" ,42);
+	printf("{%10.11d}" ,42);
 	printf("\n");
-	printf("{%10.2s}" ,"plop");
+	printf("{%.10s}" ,"plop");
 	printf("\n");
-	printf("% .4d" ,42);
+	printf("% .1d" ,42);
 	printf("\n");
 	printf("%4.d" ,42);
 	printf("\n");
@@ -38,12 +38,10 @@ int main()
 	printf("\n");
 	printf("%10%");
 	printf("\n");
-	ft_printf("%c", 'c');
+	ft_printf("%.c", 'c');
 	ft_printf("%o", 10);
 	ft_printf("test");
-	printf("\n");
-	ft_printf("{%3c}");
-	printf("\n");
-	printf("{%3c}");
+	ft_printf("\n");
+	ft_printf("%10.4d\n%.2s",42,"plop");
 	return (0);
 }

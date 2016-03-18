@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:23:15 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/17 23:54:50 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/18 06:10:28 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,17 @@ t_lst	*pre_calc(const char *format, va_list vl, int *i, t_lst *list)
 			while (ft_isdigit(format[*i]))
 				*i += 1;
 		}
+		if (format[*i] == '.')
+		{
+			*i += 1;
+			precision = 1;
+			if (ft_isdigit(format[*i]))
+			{
+				val_precision = ft_atoi(&format[*i]);
+				while (ft_isdigit(format[*i]))
+					*i += 1;
+			}
+		}
 		if (format[*i] == '%')
 			ft_list_push_back(&list, "%");
 		else if (format[*i] == 'c')
@@ -174,6 +185,29 @@ t_lst	*pre_calc(const char *format, va_list vl, int *i, t_lst *list)
 			}
 			str = ft_strdup(ft_itoa(result));
 			ft_list_push_back(&list, str);
+		}
+		if (precision)
+		{
+			tmp1 = list;
+			while (tmp1->next != NULL)
+				tmp1 = tmp1->next;
+			if (val_precision < tmp1->size && format[*i] == 's')
+			{
+				ft_bzero(&tmp1->str[val_precision], ft_strlen(&tmp1->str[val_precision]));
+				tmp1->size = ft_strlen(tmp1->str);
+			}
+			if (val_precision > tmp1->size && format[*i] == 'd')
+			{
+				j = 0;
+				tmp = ft_memalloc(val_precision - tmp1->size + 1);
+				while (j < val_precision - tmp1->size)
+				{
+					tmp[j] = '0';
+					j++;
+				}
+				tmp1->str = ft_strjoin(tmp, tmp1->str);
+				tmp1->size = ft_strlen(tmp1->str);
+			}
 		}
 		if (taille_min != 0)
 		{
