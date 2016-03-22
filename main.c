@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 13:09:55 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/18 06:11:15 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/22 19:36:50 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int main()
 	printf("\n");
 	printf("{%.10s}" ,"plop");
 	printf("\n");
-	printf("% .1d" ,42);
+	printf("% .4d" ,42);
 	printf("\n");
-	printf("%4.d" ,42);
+	printf("%-4.d" ,42);
 	printf("\n");
 	ft_putnbr(printf("%.c" ,0));
 	printf("\n");
@@ -43,5 +43,11 @@ int main()
 	ft_printf("test");
 	ft_printf("\n");
 	ft_printf("%10.4d\n%.2s",42,"plop");
+	ft_printf("\n");
+	printf("%#-o", i);
+	printf("\n");
+	printf("%10.10d", i);
+	printf("\n");
+	printf("%x", -42);
 	return (0);
 }
