@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 14:44:08 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/22 19:45:30 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/31 16:20:08 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,14 @@ void	ft_tri_list(t_lst **begin_list)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = 1;
 	size = count_lst(begin_list);
 	tmp = *begin_list;
-	while (i < (size / 2))
+	while (i <= (size / 2))
 	{
-		if (i == 0)
-			j = i + 1;
-		else
-			j = i;
-		tmp1 = *begin_list;
-		while (j < size - i)
+		j = i + 1;
+		tmp1 = tmp->next;
+		while (j <= size - i)
 		{
 			tmp1 = tmp1->next;
 			j++;

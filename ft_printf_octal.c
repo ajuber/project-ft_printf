@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:46:40 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/23 23:49:19 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/31 17:10:55 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_printf_octal(t_env1 *env1, t_env2 *env2)
 {
 	env2->test = 1;
 	env2->result = 0;
-	env2->quot = va_arg(env1->vl, int);
+	env2->quot = va_arg(env1->vl, unsigned int);
 	env2->j = 0;
 	while (env2->quot > 0 || env2->test)
 	{

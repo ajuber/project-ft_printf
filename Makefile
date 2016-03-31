@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:33:50 by ajubert           #+#    #+#              #
-#    Updated: 2016/03/24 00:42:05 by ajubert          ###   ########.fr        #
+#    Updated: 2016/03/31 19:20:47 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRC_C=		ft_memset.c		ft_bzero.c		ft_memcpy.c\
 			ft_printf_ch.c					ft_print_string.c\
 			ft_printf_ent.c					ft_printf_octal.c\
 			ft_printf_hexa.c				ft_printf_precision.c\
-			ft_printf_taille_min.c			ft_printf_calc.c
+			ft_printf_taille_min.c			ft_printf_calc.c\
+			ft_printf_p.c					ft_swap_char.c
 
 SRC_O=$(SRC_C:.c=.o)
 

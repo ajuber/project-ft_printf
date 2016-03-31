@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 13:09:55 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/22 19:36:50 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/31 16:11:26 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,13 @@ int main()
 	printf("%10.10d", i);
 	printf("\n");
 	printf("%x", -42);
+	printf("\n");
+	printf("%p", str);
+	printf("\n");
+	ft_printf("%p", str);
+	printf("\n");
+	printf("%x", 62927376);
+	printf("\n");
+	ft_printf("%x", 62927376);
 	return (0);
 }

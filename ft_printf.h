@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:42:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/24 00:42:43 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/31 17:24:02 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ typedef struct		s_env2
 	char			c;
 	char			*tmp;
 	int				result;
-	int				quot;
+	unsigned int	quot;
+	void			*quot_p;
+	unsigned long	quot_po;
 	int				reste;
 	t_lst			*tmp1;
 	int				taille_min;
@@ -70,5 +72,6 @@ void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_precision(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_taille_min(t_env1 *env1, t_env2 *env2);
 void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2);
+void	ft_printf_p(t_env1 *env1, t_env2 *env2);
 
 #endif

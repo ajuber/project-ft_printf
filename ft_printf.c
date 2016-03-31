@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:23:15 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/24 01:03:45 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/03/31 17:45:55 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int		count_param(const char *format)
 		}
 		if (format[i] == '%')
 			i++;
-		else if (format[i] == 'd' || format[i] == 'c' || format[i] == 's' || format[i] == 'o' || format[i] == 'x' || format[i] == 'X' || format[i] == 'i')
+		else if (format[i] == 'd' || format[i] == 'c' || format[i] == 's'
+				|| format[i] == 'o' || format[i] == 'x' || format[i] == 'X'
+				|| format[i] == 'i')
 			result++;
 		i++;
 	}
