@@ -30,6 +30,8 @@ void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
 		ft_printf_hexa(format, env1, env2);
 	else if (format[env1->taille_f] == 'p')
 		ft_printf_p(env1, env2);
+	//else if (format[env1->taille_f] == 'C')
+	//	ft_printf_C(env1, env2);
 	if (env2->precision)
 		ft_printf_precision(format, env1, env2);
 	if (env2->taille_min != 0)

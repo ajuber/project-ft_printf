@@ -16,9 +16,7 @@ int		count_param(const char *format)
 {
 	int i;
 	int result;
-	int j;
 
-	j = 0;
 	result = 0;
 	i = 0;
 	while (format[i])

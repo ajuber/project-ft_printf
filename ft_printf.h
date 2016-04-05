@@ -41,6 +41,7 @@ typedef struct		s_env2
 	char			*str;
 	char			c;
 	char			*tmp;
+	wchar_t			C;
 	int				result;
 	unsigned int	quot;
 	void			*quot_p;
@@ -73,5 +74,6 @@ void	ft_printf_precision(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_taille_min(t_env1 *env1, t_env2 *env2);
 void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_p(t_env1 *env1, t_env2 *env2);
+void	ft_printf_C(t_env1 *env1, t_env2 *env2);
 
 #endif

@@ -57,5 +57,8 @@ int main()
 	printf("%x", 62927376);
 	printf("\n");
 	ft_printf("%x", 62927376);
+	printf("\n");
+	ft_putnbr(wprintf("%C", 130));
+	printf("\n");
 	return (0);
 }
