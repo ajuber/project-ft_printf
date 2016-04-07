@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:37:34 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/31 20:11:40 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/07 18:58:18 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	ft_printf_ent(t_env1 *env1, t_env2 *env2)
 {
-	//char	c;
-	//int		i;
+	char	c;
+	int		i;
 
-	//env2->test = 0;
-	//c = ' ';
+	env2->test = 0;
+	c = ' ';
 	env2->result = (va_arg(env1->vl, int));
-	if (env2->plus && env2->result >= 0)
+	/*if (env2->plus && env2->result >= 0)
 		env2->str = ft_strdup("+");
 	else
 		env2->str = ft_strdup("\0");
 	env2->tmp = env2->str;
 	env2->str = ft_strjoin(env2->str, ft_itoa(env2->result));
-	free(env2->tmp);/*
+	free(env2->tmp);*/
 	env2->str = ft_itoa(env2->result);
-	if (env2->precision && env2->val_precision > 0)
+	if ((size_t)env2->val_precision > ft_strlen(env2->str))
 	{
 		env2->j = 0;
 		env2->tmp = ft_memalloc(env2->val_precision - ft_strlen(env2->str) + 1);
@@ -74,6 +74,6 @@ void	ft_printf_ent(t_env1 *env1, t_env2 *env2)
 				i++;
 			env2->str[i] = '+';
 		}
-	}*/
+	}
 	ft_list_push_back(&env1->list, env2->str);
 }

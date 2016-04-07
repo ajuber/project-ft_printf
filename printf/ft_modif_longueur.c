@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_modif_longueur.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/07 18:27:13 by ajubert           #+#    #+#             */
+/*   Updated: 2016/04/07 18:30:37 by ajubert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_modif_longueur(const char *format, t_env1 *env1, t_env2 *env2)
@@ -6,22 +18,23 @@ void	ft_modif_longueur(const char *format, t_env1 *env1, t_env2 *env2)
 		return ;
 	if (ft_strncmp(&format[env1->taille_f], "hh", 2) == 0)
 	{
-		conv->modif = HH;
+		env2->modif = HH;
 		env1->taille_f += 2;
 		return ;
 	}
 	if (ft_strncmp(&format[env1->taille_f], "ll", 2) == 0)
 	{
-		conv->modif = LL;
+		env2->modif = LL;
 		env1->taille_f += 2;
 		return ;
 	}
 	else if (format[env1->taille_f] == 'h')
-		conv->modif = H;
+		env2->modif = H;
 	else if (format[env1->taille_f] == 'l')
-		conv->modif = L;
+		env2->modif = L;
 	else if (format[env1->taille_f] == 'j')
-		conv->modif = J;
+		env2->modif = J;
 	else if (format[env1->taille_f] == 'z')
-		conv->modif = Z;
+		env2->modif = Z;
+	env1->taille_f++;
 }

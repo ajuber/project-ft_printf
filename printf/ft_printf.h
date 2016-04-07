@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:42:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/31 17:24:02 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/07 18:25:34 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <stdarg.h>
+# include <wchar.h>
 
 typedef struct		s_lst
 {
@@ -34,6 +35,11 @@ typedef struct		s_env1
 	char			*str;
 	char			*temp;
 }					t_env1;
+
+typedef enum		e_modif
+{
+	NO, HH, H, LL, L, J, Z
+}					t_modif;
 
 typedef struct		s_env2
 {
@@ -57,6 +63,7 @@ typedef struct		s_env2
 	int				moins;
 	int				test;
 	int				zero;
+	t_modif			modif;
 }					t_env2;
 
 int		ft_printf(const char *format, ...);
