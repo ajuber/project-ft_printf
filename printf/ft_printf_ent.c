@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:37:34 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 04:34:06 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/08 04:55:10 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	ft_printf_ent(const char *format, t_env1 *env1, t_env2 *env2)
 	}
 	else
 	{
-		if (env2->modif == LL || env2->modif == J || env2->modif == L || format[env1->taille_f] == 'U')
+		//if (env2->modif == LL || env2->modif == J || env2->modif == L || format[env1->taille_f] == 'U')
 			env2->str = ft_unsigned_long_itoa(env2->argument1);
-		else
-			env2->str = ft_unsigned_itoa(env2->argument1);
+		//else
+		//	env2->str = ft_unsigned_itoa(env2->argument1);
 	}
 	if ((size_t)env2->val_precision > ft_strlen(env2->str))
 	{

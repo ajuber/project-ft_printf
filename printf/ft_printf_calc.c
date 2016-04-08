@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 00:34:12 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 03:54:19 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/08 05:20:29 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	signed_conv(const char *format, t_env1 *env1, t_env2 *env2)
 {
-	if (env2->modif == HH)
+	if (env2->modif == L || format[env1->taille_f] == 'D')
+		env2->argument = va_arg(env1->vl, long);
+	else if (env2->modif == HH)
 		env2->argument = (char)va_arg(env1->vl, int);
 	else if (env2->modif == H)
 		env2->argument = (short)va_arg(env1->vl, int);
-	else if (env2->modif == L || format[env1->taille_f] == 'D')
-		env2->argument = va_arg(env1->vl, long);
 	else if (env2->modif == LL)
 		env2->argument = va_arg(env1->vl, long long);
 	else if (env2->modif == J)
@@ -32,12 +32,12 @@ void	signed_conv(const char *format, t_env1 *env1, t_env2 *env2)
 
 void	unsigned_conv(const char *format, t_env1 *env1, t_env2 *env2)
 {
-	if (env2->modif == HH)
+	if (env2->modif == L || ft_strchr("OU", format[env1->taille_f]))
+		env2->argument1 = va_arg(env1->vl, unsigned long);
+	else if (env2->modif == HH)
 		env2->argument1 = (unsigned char)va_arg(env1->vl, unsigned int);
 	else if (env2->modif == H)
 		env2->argument1 = (unsigned short)va_arg(env1->vl, unsigned int);
-	else if (env2->modif == L || ft_strchr("OU", format[env1->taille_f]))
-		env2->argument1 = va_arg(env1->vl, unsigned long);
 	else if (env2->modif == LL)
 		env2->argument1 = va_arg(env1->vl, unsigned long long);
 	else if (env2->modif == J)
