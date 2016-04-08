@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 14:39:07 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/31 19:19:57 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/08 01:31:14 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,8 @@ t_list				*ft_lstnew_cpy(void const *content, size_t content_size);
 int					get_next_line(int const fd, char **line);
 int					ft_iterative_power(int nb, int power);
 void				ft_swap_char(char *a, char *b);
+char				*ft_itoa_long_long(long long n);
+char				*ft_unsigned_itoa(unsigned int n);
+char				*ft_unsigned_long_itoa(unsigned long long n);
 
 #endif

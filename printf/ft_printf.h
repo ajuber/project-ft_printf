@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:42:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/07 18:25:34 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/08 03:43:34 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,21 @@ typedef enum		e_modif
 	NO, HH, H, LL, L, J, Z
 }					t_modif;
 
-typedef struct		s_env2
+typedef struct			s_env2
 {
+	intmax_t		argument;
+	uintmax_t		argument1;
+	wint_t			wint;
 	int				j;
 	char			*str;
 	char			c;
 	char			*tmp;
-	wchar_t			C;
-	int				result;
-	unsigned int	quot;
+	wchar_t			wchar;
+	wchar_t			*wstr;
+	uintmax_t		result;
 	void			*quot_p;
 	unsigned long	quot_po;
-	int				reste;
+	uintmax_t		reste;
 	t_lst			*tmp1;
 	int				taille_min;
 	int				count_space;
@@ -74,7 +77,7 @@ void	ft_init_env_printf(t_env2 *env2);
 void	ft_before_modif_longueur(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_ch(t_env1 *env1, t_env2 *env2);
 void	ft_print_string(t_env1 *env1, t_env2 *env2);
-void	ft_printf_ent(t_env1 *env1, t_env2 *env2);
+void	ft_printf_ent(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_octal(t_env1 *env1, t_env2 *env2);
 void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_precision(const char *format, t_env1 *env1, t_env2 *env2);
@@ -82,5 +85,6 @@ void	ft_printf_taille_min(t_env1 *env1, t_env2 *env2);
 void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_p(t_env1 *env1, t_env2 *env2);
 void	ft_printf_C(t_env1 *env1, t_env2 *env2);
+void	ft_modif_longueur(const char *format, t_env1 *env1, t_env2 *env2);
 
 #endif

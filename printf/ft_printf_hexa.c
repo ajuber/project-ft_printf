@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:53:21 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/31 17:11:38 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/08 03:44:30 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	env2->test = 1;
 	env2->tmp1 = NULL;
-	env2->quot = va_arg(env1->vl, unsigned int);
 	env2->str = ft_memalloc(2);
-	while (env2->quot > 0 || env2->test)
+	while (env2->argument1 > 0 || env2->test)
 	{
 		env2->test = 0;
 		env2->result = 0;
-		env2->reste = env2->quot % 16;
-		env2->quot /= 16;
+		env2->reste = env2->argument1 % 16;
+		env2->argument1 /= 16;
 		if (env2->reste >= 10)
 		{
 			while (env2->reste != 10 + env2->result)
@@ -36,7 +35,7 @@ void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 			ft_list_push_back(&env2->tmp1, env2->str);
 		}
 		else
-			ft_list_push_back(&env2->tmp1, ft_itoa(env2->reste));
+			ft_list_push_back(&env2->tmp1, ft_unsigned_long_itoa(env2->reste));
 	}
 	ft_tri_list(&env2->tmp1);
 	env2->str = ft_strdup("\0");

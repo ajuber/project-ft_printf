@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 00:56:09 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/31 17:39:31 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/08 02:08:10 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ void	ft_printf_p(t_env1 *env1, t_env2 *env2)
 	env2->tmp1 = NULL;
 	env2->quot_p = va_arg(env1->vl, void *);
 	env2->quot_po = (unsigned long)env2->quot_p;
-	ft_putchar('\n');
-	ft_putnbr(env2->quot);
-	ft_putchar('\n');
 	env2->str = ft_memalloc(2);
 	while (env2->quot_po > 0)
 	{

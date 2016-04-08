@@ -6,20 +6,19 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:37:34 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/07 18:58:18 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/08 04:34:06 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printf_ent(t_env1 *env1, t_env2 *env2)
+void	ft_printf_ent(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	char	c;
 	int		i;
 
 	env2->test = 0;
 	c = ' ';
-	env2->result = (va_arg(env1->vl, int));
 	/*if (env2->plus && env2->result >= 0)
 		env2->str = ft_strdup("+");
 	else
@@ -27,7 +26,20 @@ void	ft_printf_ent(t_env1 *env1, t_env2 *env2)
 	env2->tmp = env2->str;
 	env2->str = ft_strjoin(env2->str, ft_itoa(env2->result));
 	free(env2->tmp);*/
-	env2->str = ft_itoa(env2->result);
+	if (ft_strchr("diD", format[env1->taille_f]))
+	{
+		if (env2->modif == LL || env2->modif == J)
+			env2->str = ft_itoa_long_long(env2->argument);
+		else
+			env2->str = ft_itoa(env2->argument);
+	}
+	else
+	{
+		if (env2->modif == LL || env2->modif == J || env2->modif == L || format[env1->taille_f] == 'U')
+			env2->str = ft_unsigned_long_itoa(env2->argument1);
+		else
+			env2->str = ft_unsigned_itoa(env2->argument1);
+	}
 	if ((size_t)env2->val_precision > ft_strlen(env2->str))
 	{
 		env2->j = 0;
@@ -38,7 +50,7 @@ void	ft_printf_ent(t_env1 *env1, t_env2 *env2)
 			env2->j++;
 		}
 		env2->str = ft_strjoin(env2->tmp , env2->str);
-		if (env2->result < 0)
+		if (env2->argument < 0)
 		{
 			i = 0;
 			while (env2->str[i] != '-')
@@ -53,7 +65,7 @@ void	ft_printf_ent(t_env1 *env1, t_env2 *env2)
 			c = '0';
 		env2->tmp = ft_memalloc(env2->taille_min);
 		env2->tmp = ft_strjoin(ft_memset(ft_memalloc(env2->taille_min - ft_strlen(env2->str) + 1), c, env2->taille_min - ft_strlen(env2->str)), env2->str);
-		if (env2->result < 0 && c == '0')
+		if (env2->argument < 0 && c == '0')
 		{
 			i = 0;
 			while (env2->tmp[i] != '-')
@@ -64,7 +76,7 @@ void	ft_printf_ent(t_env1 *env1, t_env2 *env2)
 		env2->str = ft_strdup(env2->tmp);
 	}
 	i = 0;
-	if (env2->plus && env2->result >= 0)
+	if (env2->plus && env2->argument >= 0)
 	{
 		if (env2->test == 0)
 			env2->str = ft_strjoin("+", env2->str);

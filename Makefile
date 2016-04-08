@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:33:50 by ajubert           #+#    #+#              #
-#    Updated: 2016/04/07 17:48:30 by ajubert          ###   ########.fr        #
+#    Updated: 2016/04/08 03:50:14 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,10 @@ FT_COMPILED =	ft_memset.o\
 				ft_lstnew_cpy.o\
 				get_next_line.o\
 				ft_iterative_power.o\
-				ft_swap_char.o
+				ft_swap_char.o\
+				ft_itoa_long_long.o\
+				ft_unsigned_itoa.o\
+				ft_unsigned_long_itoa.o
 
 PRINTF_CMP = ft_printf.o\
 			ft_printf_p.o\
@@ -101,6 +104,7 @@ PRINTF_CMP = ft_printf.o\
 			ft_printf_precision.o\
 			ft_printf_taille_min.o\
 			ft_printf_calc.o\
+			ft_modif_longueur.o
 
 COMPIL =		$(FT_COMPILED) $(PRINTF_CMP)
 
