@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:42:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 03:43:34 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/09 22:01:54 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_p(t_env1 *env1, t_env2 *env2);
 void	ft_printf_C(t_env1 *env1, t_env2 *env2);
 void	ft_modif_longueur(const char *format, t_env1 *env1, t_env2 *env2);
+void	ft_precision(t_env2 *env2, int size_str);
+void	ft_taille_min(t_env2 *env2);
+void	ft_plus(t_env2 *env2);
 
 #endif

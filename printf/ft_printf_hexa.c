@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:53:21 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 03:44:30 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/09 23:34:53 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 {
+	int i;
+
+	i = 0;
 	env2->test = 1;
 	env2->tmp1 = NULL;
 	env2->str = ft_memalloc(2);
@@ -44,12 +47,60 @@ void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 		env2->str = ft_strjoin(env2->str, env2->tmp1->str);
 		env2->tmp1 = env2->tmp1->next;
 	}
+	if ((size_t)env2->val_precision > ft_strlen(env2->str))
+		ft_precision(env2, ft_strlen(env2->str));
+	if (env2->taille_min != 0 && (size_t)env2->taille_min > ft_strlen(env2->str))
+		ft_taille_min(env2);
 	if (env2->dieze && env2->str[0] != '0')
 	{
 		if (format[env1->taille_f] == 'x')
-			env2->str = ft_strjoin("0x", env2->str);
+		{
+			if (env2->test == 0)
+				env2->str = ft_strjoin("0x", env2->str);
+			else
+			{
+				if (!env2->moins)
+				{
+					while (!ft_isdigit(env2->str[i + 1]) || !ft_isalpha(env2->str[i + 1]))
+						i++;
+					env2->str[i] = 'x';
+					if (i == 0)
+						env2->str = ft_strjoin("0", env2->str);
+					else
+						env2->str[i - 1] = '0';
+				}
+				else
+				{
+					env2->str = ft_strjoin("0x", env2->str);
+					if (env2->test == 1)
+						(env2->str[ft_strlen(env2->str) - 2] == ' ') ? (env2->str[ft_strlen(env2->str) - 2] = 0) : (env2->str[ft_strlen(env2->str) - 1] = 0);
+				}
+			}
+		}
 		else
-			env2->str = ft_strjoin("0X", env2->str);
+		{
+			if (env2->test == 0)
+				env2->str = ft_strjoin("0X", env2->str);
+			else
+			{
+				if (!env2->moins)
+				{
+					while (!ft_isdigit(env2->str[i + 1]) || !ft_isalpha(env2->str[i + 1]))
+						i++;
+					env2->str[i] = 'X';
+					if (i == 0)
+						env2->str = ft_strjoin("0", env2->str);
+					else
+						env2->str[i - 1] = '0';
+				}
+				else
+				{
+					env2->str = ft_strjoin("0X", env2->str);
+					if (env2->test == 1)
+						(env2->str[ft_strlen(env2->str) - 2] == ' ') ? (env2->str[ft_strlen(env2->str) - 2] = 0) : (env2->str[ft_strlen(env2->str) - 1] = 0);
+				}
+			}
+		}
 	}
 	ft_list_push_back(&env1->list, env2->str);
 }
