@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 00:56:09 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 02:08:10 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/10 05:12:50 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	ft_printf_p(t_env1 *env1, t_env2 *env2)
 		env2->str = ft_strjoin(env2->str, env2->tmp1->str);
 		env2->tmp1 = env2->tmp1->next;
 	}
+	if ((unsigned long)env2->quot_p == 0)
+		env2->str = ft_strjoin("0", env2->str);
 	env2->str = ft_strjoin("0x", env2->str);
 	ft_list_push_back(&env1->list, env2->str);
 }

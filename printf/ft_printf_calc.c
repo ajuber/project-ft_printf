@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 00:34:12 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/09 22:49:06 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/10 05:18:25 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	printf_num(const char *format, t_env1 *env1, t_env2 *env2)
 		ft_printf_octal(env1, env2);
 	else if (ft_strchr("xX", format[env1->taille_f]))
 		ft_printf_hexa(format, env1, env2);
-	else if (format[env1->taille_f] == 'p')
-		ft_printf_p(env1, env2);
+	//else if (format[env1->taille_f] == 'p')
+	//	ft_printf_p(env1, env2);
 }
 
 void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
