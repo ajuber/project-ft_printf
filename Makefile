@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:33:50 by ajubert           #+#    #+#              #
-#    Updated: 2016/04/09 22:01:20 by ajubert          ###   ########.fr        #
+#    Updated: 2016/04/10 01:11:31 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,7 @@ PRINTF_CMP = ft_printf.o\
 			ft_modif_longueur.o\
 			ft_precision.o\
 			ft_taille_min.o\
-			ft_plus.o
+			ft_plus.o\
 
 COMPIL =		$(FT_COMPILED) $(PRINTF_CMP)
 
