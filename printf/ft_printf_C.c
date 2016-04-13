@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 18:03:29 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 03:38:47 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/13 19:03:55 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	print_wchar(const char *format, t_env1 *env1, t_env2 *env2, int size)
 	i = 0;
 	while (i < size)
 	{
-		print
+		ft_printf_wint(env2, env2->wstr[i]);
+		i++;
+	}
 }
 
 void	ft_printf_C(const char *format, t_env1 *env1, t_env2 *env2)
@@ -63,4 +65,5 @@ void	ft_printf_C(const char *format, t_env1 *env1, t_env2 *env2)
 	env2->wchar = (wchar_t)env2->wint;
 	env2->wstr = &env2->wchar;
 	print_wchar(format, env1, env2, 1);
+	ft_list_push_back(&env1->list, env2->str);
 }

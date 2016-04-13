@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 00:34:12 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/10 05:18:25 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/13 18:28:24 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,20 @@ void	printf_num(const char *format, t_env1 *env1, t_env2 *env2)
 
 void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
 {
-/*	if (env2->modif == L || ft_strchr("CS", format[env1->taille_f]))
+	if (env2->modif == L || ft_strchr("CS", format[env1->taille_f]))
 	{
 		if (ft_strchr("cC", format[env1->taille_f]))
-			ft_printf_C(env1, env2);
-		else if (ft_strchr("sS", format[env1->taille_f]))
-			ft_printf_S(env1, env2);
+			ft_printf_C(format, env1, env2);
+	//	else if (ft_strchr("sS", format[env1->taille_f]))
+	//		ft_printf_S(env1, env2);
 	}
 	else
-	{*/
+	{
 		if (format[env1->taille_f] == 'c')
 			ft_printf_ch(env1, env2);
 		else if (format[env1->taille_f] == 's')
 			ft_print_string(env1, env2);
-	//}
+	}
 }
 
 void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
