@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:06:13 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/10 02:04:36 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/13 22:54:37 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,37 @@ void	ft_taille_min_ch(t_env2 *env2)
 
 void	ft_printf_ch(t_env1 *env1, t_env2 *env2)
 {
+	env2->j = 0;
 	env2->c = va_arg(env1->vl, int);
-	if (env2->c == 0)
+	if (!env2->c)
 	{
-		env2->str = ft_strdup("\0");
 		if (env2->taille_min > 1)
 		{
-			ft_taille_min_ch(env2);
-			env2->test = 1;
+			env2->str = ft_memalloc(env2->taille_min + 1);
+			if (env2->moins)
+			{
+				env2->str[0] = '\0';
+				env2->j++;
+				while (env2->j < env2->taille_min)
+				{
+					env2->str[env2->j] = ' ';
+					env2->j++;
+				}
+			}
+			else
+			{
+				env2->str[env2->taille_min - 1] = '\0';
+				while (env2->j < env2->taille_min - 1)
+				{
+					env2->str[env2->j] = ' ';
+					env2->j++;
+				}
+			}
+		}
+		else
+		{
+			env2->str = ft_memalloc(2);
+			env2->str[0] = env2->c;
 		}
 		ft_list_push_back(&env1->list, env2->str);
 		env2->tmp1 = env1->list;

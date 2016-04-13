@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:33:50 by ajubert           #+#    #+#              #
-#    Updated: 2016/04/13 20:15:13 by ajubert          ###   ########.fr        #
+#    Updated: 2016/04/13 23:25:13 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,9 @@ FT_COMPILED =	ft_memset.o\
 				ft_itoa_long_long.o\
 				ft_unsigned_itoa.o\
 				ft_unsigned_long_itoa.o\
-				ft_wstrlen.o
+				ft_wstrlen.o\
+				ft_putstr_size.o\
+				ft_strjoin_size.o
 
 PRINTF_CMP = ft_printf.o\
 			ft_printf_p.o\
