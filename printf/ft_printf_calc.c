@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 00:34:12 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/13 18:28:24 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/13 20:20:05 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
 	{
 		if (ft_strchr("cC", format[env1->taille_f]))
 			ft_printf_C(format, env1, env2);
-	//	else if (ft_strchr("sS", format[env1->taille_f]))
-	//		ft_printf_S(env1, env2);
+		else if (ft_strchr("sS", format[env1->taille_f]))
+			ft_printf_S(format, env1, env2);
 	}
 	else
 	{

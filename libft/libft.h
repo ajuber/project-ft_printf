@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 14:39:07 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 01:31:14 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/13 20:13:37 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ void				ft_swap_char(char *a, char *b);
 char				*ft_itoa_long_long(long long n);
 char				*ft_unsigned_itoa(unsigned int n);
 char				*ft_unsigned_long_itoa(unsigned long long n);
+size_t				ft_wstrlen(wchar_t *wstr);
 
 #endif
