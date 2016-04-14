@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 22:44:16 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/13 18:58:36 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/14 06:43:45 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	ft_before_modif_longueur(const char *format, t_env1 *env1, t_env2 *env2)
 {
-	if (format[env1->taille_f] == '#' || format[env1->taille_f] == ' '
-			|| format[env1->taille_f] == '+' || format[env1->taille_f] == '-'
-			|| format[env1->taille_f] == '0')
+	if (ft_strchr("#+-0 ", format[env1->taille_f]))
 		ft_flags(format, env1, env2);
 	if (ft_isdigit(format[env1->taille_f]))
 	{

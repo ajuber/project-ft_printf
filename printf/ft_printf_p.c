@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 00:56:09 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/10 05:12:50 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/14 06:27:25 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 void	ft_printf_p(t_env1 *env1, t_env2 *env2)
 {
+	int i;
+
+	i = 0;
 	env2->tmp1 = NULL;
 	env2->quot_p = va_arg(env1->vl, void *);
 	env2->quot_po = (unsigned long)env2->quot_p;
+	env2->test = 1;
 	env2->str = ft_memalloc(2);
-	while (env2->quot_po > 0)
+	while (env2->quot_po > 0 || env2->test)
 	{
+		env2->test = 0;
 		env2->result = 0;
 		env2->reste = env2->quot_po % 16;
 		env2->quot_po = env2->quot_po / 16;
@@ -41,8 +46,42 @@ void	ft_printf_p(t_env1 *env1, t_env2 *env2)
 		env2->str = ft_strjoin(env2->str, env2->tmp1->str);
 		env2->tmp1 = env2->tmp1->next;
 	}
-	if ((unsigned long)env2->quot_p == 0)
-		env2->str = ft_strjoin("0", env2->str);
-	env2->str = ft_strjoin("0x", env2->str);
+	if ((size_t)env2->val_precision > ft_strlen(env2->str))
+		ft_precision(env2, ft_strlen(env2->str));
+	if (env2->precision == 1 && env2->val_precision == 0 && (unsigned long)env2->quot_p == 0)
+		env2->str[0] = 0;
+	if (env2->taille_min != 0 && (size_t)env2->taille_min > ft_strlen(env2->str))
+		ft_taille_min(env2);
+	if (env2->test == 0)
+		env2->str = ft_strjoin("0x", env2->str);
+	else
+	{
+		if (!env2->moins)
+		{
+			while (!(ft_isdigit(env2->str[i + 1]) || ft_isalpha(env2->str[i + 1])))
+				i++;
+			if (env2->str[i] == '0' && env2->str[i + 1] == '0')
+			{
+				env2->str[i] = '0';
+				env2->str[i + 1] = 'x';
+			}
+			else if (env2->str[i] == ' ' && env2->str[i - 1] == ' ')
+			{
+				env2->str[i - 1] = '0';
+				env2->str[i] = 'x';
+			}
+			else
+			{
+				env2->str[i] = 'x';
+				env2->str = ft_strjoin("0", env2->str);
+			}
+		}
+		else
+		{
+			env2->str = ft_strjoin("0x", env2->str);
+			if (env2->test == 1)
+				(env2->str[ft_strlen(env2->str) - 2] == ' ') ? (env2->str[ft_strlen(env2->str) - 2] = 0) : (env2->str[ft_strlen(env2->str) - 1] = 0);
+		}
+	}
 	ft_list_push_back(&env1->list, env2->str);
 }

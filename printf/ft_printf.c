@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:23:15 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/13 23:23:07 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/14 06:50:16 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int		count_param(const char *format)
 t_lst	*pre_calc(const char *format, t_env1 *env1)
 {
 	t_env2	env2;
-	//ft_init_env_printf(&env2);
 	ft_bzero(&env2, sizeof(t_env2));
 	env2.j = env1->taille_f;
 	while (format[env1->taille_f] && format[env1->taille_f] != '%')
@@ -84,11 +83,6 @@ int		ft_printf(const char *format, ...)
 		env.taille += env.tmp->size;
 		env.tmp = env.tmp->next;
 	}
-	/*while (env.list)
-	{
-		env.taille += env.list->size;
-		env.list = env.list->next;
-	}*/
 	ft_putstr_size(env.str, env.taille);
 	va_end(env.vl);
 	return (env.taille);

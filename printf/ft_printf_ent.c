@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:37:34 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/10 04:49:39 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/14 07:14:11 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void		ft_printf_ent(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	char	c;
-	int		i;
 	int		size_str;
 
 	env2->test = 0;
@@ -33,7 +32,6 @@ void		ft_printf_ent(const char *format, t_env1 *env1, t_env2 *env2)
 		env2->str[0] = 0;
 	if (env2->taille_min != 0 && (size_t)env2->taille_min > ft_strlen(env2->str))
 		ft_taille_min(env2);
-	i = 0;
 	if (env2->count_space && env2->argument >= 0 && !env2->precision && !env2->taille_min && !env2->plus && ft_strchr("diD", format[env1->taille_f]))
 	{
 		env2->tmp = env2->str;

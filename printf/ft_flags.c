@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 15:37:32 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/23 12:40:00 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/14 06:45:06 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	ft_flags(const char *format, t_env1 *env1, t_env2 *env2)
 	if (format[env1->taille_f] == '0')
 		env2->zero = 1;
 	env1->taille_f++;
-	if (format[env1->taille_f] == '#' || format[env1->taille_f] == ' ' || format[env1->taille_f] == '+' || format[env1->taille_f] == '-' || format[env1->taille_f] == '0')
+	if (ft_strchr("#+-0 ", format[env1->taille_f]))
 		ft_flags(format, env1, env2);
 }

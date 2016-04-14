@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 23:06:29 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/13 23:14:39 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/14 05:44:11 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strjoin_size(char const *s1, char const *s2,
 		return (NULL);
 	result[len] = 0;
 	ft_bzero(result, len);
-	ft_strncpy(result, s1, size1);
-	ft_strncpy(&result[size1], s2, size2);
+	ft_strnncpy(result, s1, size1);
+	ft_strnncpy(&result[size1], s2, size2);
 	return (result);
 }
