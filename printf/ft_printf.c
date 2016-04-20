@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:23:15 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/14 06:50:16 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/20 23:27:32 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,13 @@ int		ft_printf(const char *format, ...)
 		if (format[env.taille_f] != '\0')
 			env.taille_f++;
 	}
-	if (format[env.taille_f] != '\0')
+	while (format[env.taille_f] != '\0')
 		env.list = pre_calc(format, &env);
+	/*{
+		env.list = pre_calc(format, &env);
+		if (format[env.taille_f] != '\0')
+			env.taille_f++;
+	}*/
 	env.tmp = env.list;
 	env.str = ft_strdup("\0");
 	while (env.tmp)

@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:06:13 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/14 08:15:49 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/20 22:43:14 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	ft_taille_min_ch(t_env2 *env2)
 
 void	ft_taille_min_no_moins(t_env2 *env2)
 {
+	char p;
+
+	p = ' ';
+	if (env2->zero)
+		p = '0';
 	env2->str = ft_memalloc(env2->taille_min + 1);
 	if (env2->moins)
 	{
@@ -36,7 +41,7 @@ void	ft_taille_min_no_moins(t_env2 *env2)
 		env2->j++;
 		while (env2->j < env2->taille_min)
 		{
-			env2->str[env2->j] = ' ';
+			env2->str[env2->j] = p;
 			env2->j++;
 		}
 	}
@@ -45,7 +50,7 @@ void	ft_taille_min_no_moins(t_env2 *env2)
 		env2->str[env2->taille_min - 1] = '\0';
 		while (env2->j < env2->taille_min - 1)
 		{
-			env2->str[env2->j] = ' ';
+			env2->str[env2->j] = p;
 			env2->j++;
 		}
 	}

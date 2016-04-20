@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 18:03:29 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/14 08:20:57 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/20 23:07:35 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,12 @@ void	ft_printf_C(const char *format, t_env1 *env1, t_env2 *env2)
 void	ft_printf_S(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	env2->wstr = va_arg(env1->vl, wchar_t *);
+	if (!env2->wstr)
+	{
+		env2->str = NULL;
+		ft_print_string(format, env1, env2);
+		return ;
+	}
 	print_wchar(format, env1, env2, ft_wstrlen(env2->wstr));
 	ft_list_push_back(&env1->list, env2->str);
 }

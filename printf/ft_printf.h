@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:42:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/14 08:20:52 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/20 23:06:46 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_tri_list(t_lst **begin_list);
 void	ft_init_env_printf(t_env2 *env2);
 void	ft_before_modif_longueur(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_ch(t_env1 *env1, t_env2 *env2);
-void	ft_print_string(t_env1 *env1, t_env2 *env2);
+void	ft_print_string(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_ent(const char *format, t_env1 *env1, t_env2 *env2);
 void	ft_printf_octal(t_env1 *env1, t_env2 *env2);
 void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2);

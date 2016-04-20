@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:46:40 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/14 09:14:27 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/20 22:20:23 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_printf_octal(t_env1 *env1, t_env2 *env2)
 		env2->str[0] = 0;
 	if (env2->taille_min != 0 && (size_t)env2->taille_min > ft_strlen(env2->str))
 		ft_taille_min(env2);
-	if (env2->dieze == 1)
+	if (env2->dieze == 1 && ((res_arg == 0 && env2->precision) || res_arg != 0))
 	{
 		if (env2->test == 0)
 		{

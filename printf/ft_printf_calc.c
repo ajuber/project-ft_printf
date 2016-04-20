@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 00:34:12 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/13 20:20:05 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/20 23:08:56 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
 		if (format[env1->taille_f] == 'c')
 			ft_printf_ch(env1, env2);
 		else if (format[env1->taille_f] == 's')
-			ft_print_string(env1, env2);
+		{
+			env2->str = va_arg(env1->vl, char *);
+			ft_print_string(format, env1, env2);
+		}
 	}
 }
 
@@ -88,7 +91,11 @@ void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
 	ft_before_modif_longueur(format, env1, env2);
 	ft_modif_longueur(format, env1, env2);
 	if (format[env1->taille_f] == '%')
-		ft_list_push_back(&env1->list, "%");
+	{
+		env2->str = ft_strdup("%");
+		ft_print_string(format, env1, env2);
+		//ft_list_push_back(&env1->list, "%");
+	}
 	if (ft_strchr("idDoOuUxX", format[env1->taille_f]))
 		printf_num(format, env1, env2);
 	else if (format[env1->taille_f] == 'p')
