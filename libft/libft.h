@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 14:39:07 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/14 05:43:40 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 09:46:27 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,7 @@ size_t				ft_wstrlen(wchar_t *wstr);
 void				ft_putstr_size(char *str, size_t size);
 char				*ft_strjoin_size(char const *s1, char const *s2,
 					size_t size1, size_t size2);
+char				*ft_strdup_free(char *str, const char *s1);
+char				*ft_strjoin_free(char *str, char const *s1, char const *s2);
 
 #endif

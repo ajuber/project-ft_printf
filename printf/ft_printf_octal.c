@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:46:40 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 05:22:55 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 10:29:41 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,28 @@ void	ft_printf_octal(t_env1 *env1, t_env2 *env2)
 	{
 		env2->reste = env2->argument1 % 8;
 		env2->argument1 /= 8;
-		ft_list_push_back(&env2->tmp1, ft_unsigned_long_itoa(env2->reste));
+		ft_list_push_front(&env2->tmp1, ft_unsigned_long_itoa(env2->reste));
 	}
-	ft_tri_list(&env2->tmp1);
 	env2->str = ft_strdup("\0");
 	while (env2->tmp1)
 	{
-		env2->str = ft_strjoin(env2->str, env2->tmp1->str);
+		env2->str = ft_strjoin_free(env2->str, env2->str, env2->tmp1->str);
 		env2->tmp1 = env2->tmp1->next;
 	}
 	if (res_arg == 0)
 		env2->str = ft_strdup("0");
 	if ((size_t)env2->val_precision > ft_strlen(env2->str))
+	{
 		ft_precision(env2, ft_strlen(env2->str));
+		env2->test1 = 1;
+	}
 	if (env2->precision == 1 && env2->val_precision == 0 && res_arg == 0)
 		env2->str[0] = 0;
 	if (env2->taille_min != 0 && (size_t)env2->taille_min > ft_strlen(env2->str))
 		ft_taille_min(env2);
 	if (env2->dieze == 1 && ((res_arg == 0 && env2->precision) || res_arg != 0))
 	{
-		if (env2->test == 0)
+		if (env2->test == 0 && env2->test1 == 0)
 		{
 			env2->tmp = env2->str;
 			env2->str = ft_strjoin("0", env2->str);

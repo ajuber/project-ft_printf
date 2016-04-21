@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:23:15 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 06:09:16 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 11:21:50 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		ft_printf(const char *format, ...)
 	while (env.tmp)
 	{
 		env.temp = env.str;
-		env.str = ft_strjoin_size(env.str, env.tmp->str, env.taille,
+		env.str = ft_strjoin_size(env.temp, env.tmp->str, env.taille,
 				env.tmp->size);
 		free(env.temp);
 		env.taille += env.tmp->size;

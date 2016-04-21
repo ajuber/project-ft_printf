@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/21 06:14:46 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 06:14:51 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 08:56:58 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	print_wchar(const char *format, t_env1 *env1, t_env2 *env2, int size)
 void	ft_printf_wc(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	env2->wint = va_arg(env1->vl, wint_t);
-//	if (env2->wint <= -1 || env2->wint > 1114111)
-//		printf_error("Wrong wide char");
-//	if (env2->C > 55296 && env2->C < 57343)
-//		printf_error("Wrong wide char");
+	if (env2->wint <= -1 || env2->wint > 1114111)
+		ft_printf_error("Wrong wide char");
+	if (env2->wint > 55296 && env2->wint < 57343)
+		ft_printf_error("Wrong wide char");
 	env2->wchar = (wchar_t)env2->wint;
 	env2->wstr = &env2->wchar;
 	if (env2->wint != 0)

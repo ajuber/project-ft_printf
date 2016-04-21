@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:33:50 by ajubert           #+#    #+#              #
-#    Updated: 2016/04/21 06:15:23 by ajubert          ###   ########.fr        #
+#    Updated: 2016/04/21 09:46:59 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,9 @@ FT_COMPILED =	ft_memset.o\
 				ft_wstrlen.o\
 				ft_putstr_size.o\
 				ft_strjoin_size.o\
-				ft_strnncpy.o
+				ft_strnncpy.o\
+				ft_strdup_free.o\
+				ft_strjoin_free.o
 
 PRINTF_CMP = ft_printf.o\
 			ft_printf_p.o\
@@ -111,7 +113,8 @@ PRINTF_CMP = ft_printf.o\
 			ft_taille_min.o\
 			ft_plus.o\
 			ft_printf_wint.o\
-			ft_printf_wc.o
+			ft_printf_wc.o\
+			ft_printf_error.o
 
 COMPIL =		$(FT_COMPILED) $(PRINTF_CMP)
 

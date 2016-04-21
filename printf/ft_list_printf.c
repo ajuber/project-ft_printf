@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 14:44:08 by ajubert           #+#    #+#             */
-/*   Updated: 2016/03/31 16:20:08 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 10:38:21 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,60 +41,30 @@ void	ft_list_push_back(t_lst **begin_list, char *str)
 	}
 }
 
-int		count_lst(t_lst **begin_list)
+void	ft_list_push_front(t_lst **begin_list, char *str)
 {
-	int		result;
-	t_lst	*tmp;
+	t_lst *new;
 
-	result = 0;
-	tmp = *begin_list;
-	while (tmp)
+	new = new_lst(str);
+	if (*begin_list == NULL)
+		*begin_list = new;
+	else
 	{
-		result++;
-		tmp = tmp->next;
+		new->next = *begin_list;
+		*begin_list = new;
 	}
-	return (result);
 }
 
-void	ft_swap_list_str(t_lst **tmp, t_lst **tmp1)
+void	ft_free_list(t_lst *begin_list)
 {
-	char	*temp;
-	t_lst	*tmp00;
-	t_lst	*tmp11;
+	t_lst *tmp;
 
-	tmp00 = *tmp;
-	tmp11 = *tmp1;
-	temp = ft_strdup(tmp00->str);
-	tmp00->size = tmp11->size;
-	tmp00->str = ft_memalloc(tmp00->size);
-	tmp00->str = ft_strcpy(tmp00->str, tmp11->str);
-	free(tmp11->str);
-	tmp11->str = ft_strdup(temp);
-	tmp11->size = ft_strlen(tmp11->str);
-}
-
-void	ft_tri_list(t_lst **begin_list)
-{
-	t_lst	*tmp;
-	t_lst	*tmp1;
-	int		size;
-	int		i;
-	int		j;
-
-	i = 1;
-	size = count_lst(begin_list);
-	tmp = *begin_list;
-	while (i <= (size / 2))
+	while (begin_list)
 	{
-		j = i + 1;
-		tmp1 = tmp->next;
-		while (j <= size - i)
-		{
-			tmp1 = tmp1->next;
-			j++;
-		}
-		ft_swap_list_str(&tmp, &tmp1);
-		tmp = tmp->next;
-		i++;
+		tmp = begin_list;
+		begin_list = begin_list->next;
+		free(tmp);
+		tmp = NULL;
 	}
+	begin_list = NULL;
 }

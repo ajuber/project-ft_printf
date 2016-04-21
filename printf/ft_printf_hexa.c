@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:53:21 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 05:54:22 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 10:28:58 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ void	ft_calc_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 			else
 				env2->c = 'A' + env2->result;
 			env2->str[0] = env2->c;
-			ft_list_push_back(&env2->tmp1, env2->str);
+			ft_list_push_front(&env2->tmp1, env2->str);
 		}
 		else
-			ft_list_push_back(&env2->tmp1, ft_unsigned_long_itoa(env2->reste));
+			ft_list_push_front(&env2->tmp1, ft_unsigned_long_itoa(env2->reste));
 	}
-	ft_tri_list(&env2->tmp1);
 }
 
 void	dieze_x_no_moins(t_env2 *env2, char *c)
@@ -60,7 +59,7 @@ void	dieze_x_no_moins(t_env2 *env2, char *c)
 	else
 	{
 		env2->str[i] = c[1];
-		env2->str = ft_strjoin("0", env2->str);
+		env2->str = ft_strjoin_free(env2->str, "0", env2->str);
 	}
 }
 
@@ -108,7 +107,7 @@ void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 	env2->str = ft_strdup("\0");
 	while (env2->tmp1)
 	{
-		env2->str = ft_strjoin(env2->str, env2->tmp1->str);
+		env2->str = ft_strjoin_free(env2->str, env2->str, env2->tmp1->str);
 		env2->tmp1 = env2->tmp1->next;
 	}
 	foret_if_hexa(env2, res_arg, c);

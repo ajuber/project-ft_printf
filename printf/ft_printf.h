@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:42:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 06:06:31 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 10:39:12 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,14 @@ typedef struct		s_env2
 	int				plus;
 	int				moins;
 	int				test;
+	int				test1;
 	int				zero;
 	t_modif			modif;
 }					t_env2;
 
 int					ft_printf(const char *format, ...);
 void				ft_list_push_back(t_lst **begin_list, char *str);
+void				ft_list_push_front(t_lst **begin_list, char *str);
 void				ft_flags(const char *format, t_env1 *env1, t_env2 *env2);
 void				ft_tri_list(t_lst **begin_list);
 void				ft_init_env_printf(t_env2 *env2);
@@ -99,5 +101,7 @@ void				ft_printf_wint(t_env2 *env2, wint_t wint);
 void				ft_printf_ws(const char *format, t_env1 *env1,
 		t_env2 *env2);
 void				ft_printf_ch_null(t_env1 *env1, t_env2 *env2);
+void				ft_printf_error(char *str);
+void				ft_free_list(t_lst *begin_list);
 
 #endif

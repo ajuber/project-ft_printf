@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 00:34:12 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 05:51:46 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 11:29:41 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
 	ft_modif_longueur(format, env1, env2);
 	if (format[env1->taille_f] == '%')
 	{
-		env2->str = ft_strdup("%");
+		env2->str = ft_strdup_free(env2->str, "%");
 		ft_print_string(format, env1, env2);
 	}
-	if (ft_strchr("idDoOuUxX", format[env1->taille_f]))
+	else if (ft_strchr("idDoOuUxX", format[env1->taille_f]))
 		printf_num(format, env1, env2);
 	else if (format[env1->taille_f] == 'p')
 		ft_printf_p(env1, env2);
-	else
+	else if (ft_strchr("csCS", format[env1->taille_f]))
 		printf_str(format, env1, env2);
 }

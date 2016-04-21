@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:21:27 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 05:53:37 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 11:25:40 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ft_taille_min_string(t_env2 *env2)
 	if (env2->zero)
 		p = '0';
 	env2->j = 0;
+	//tmp1 = env2->tmp;
 	env2->tmp = ft_memalloc(env2->taille_min - ft_strlen(env2->str) + 1);
+	//free(tmp1);
 	while ((size_t)env2->j < env2->taille_min - ft_strlen(env2->str))
 	{
 		env2->tmp[env2->j] = p;
