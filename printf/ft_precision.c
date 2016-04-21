@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 20:21:30 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/09 20:26:14 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 05:45:16 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_precision(t_env2 *env2, int size_str)
 		env2->tmp[env2->j] = '0';
 		env2->j++;
 	}
-	env2->str = ft_strjoin(env2->tmp , env2->str);
+	env2->str = ft_strjoin(env2->tmp, env2->str);
 	if (env2->argument < 0)
 	{
 		i = 0;

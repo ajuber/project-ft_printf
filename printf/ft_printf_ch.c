@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:06:13 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/20 22:43:14 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 04:12:37 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,4 @@ void	ft_printf_ch(t_env1 *env1, t_env2 *env2)
 			ft_taille_min_string(env2);
 		ft_list_push_back(&env1->list, env2->str);
 	}
-}// demi codets
+}

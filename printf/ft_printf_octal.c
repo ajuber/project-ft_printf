@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:46:40 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/20 22:20:23 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 05:22:55 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	ft_printf_octal(t_env1 *env1, t_env2 *env2)
 	{
 		env2->reste = env2->argument1 % 8;
 		env2->argument1 /= 8;
-		//env2->result = env2->result + (env2->reste * (ft_iterative_power(10 , env2->j)));
-		//env2->j++;
 		ft_list_push_back(&env2->tmp1, ft_unsigned_long_itoa(env2->reste));
 	}
 	ft_tri_list(&env2->tmp1);
@@ -39,7 +37,6 @@ void	ft_printf_octal(t_env1 *env1, t_env2 *env2)
 	}
 	if (res_arg == 0)
 		env2->str = ft_strdup("0");
-	//env2->str = ft_unsigned_long_itoa(env2->result);
 	if ((size_t)env2->val_precision > ft_strlen(env2->str))
 		ft_precision(env2, ft_strlen(env2->str));
 	if (env2->precision == 1 && env2->val_precision == 0 && res_arg == 0)

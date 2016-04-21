@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_C.c                                      :+:      :+:    :+:   */
+/*   ft_printf_wc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/07 18:03:29 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/20 23:07:35 by ajubert          ###   ########.fr       */
+/*   Created: 2016/04/21 06:14:46 by ajubert           #+#    #+#             */
+/*   Updated: 2016/04/21 06:14:51 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	print_wchar(const char *format, t_env1 *env1, t_env2 *env2, int size)
 	}
 }
 
-void	ft_printf_C(const char *format, t_env1 *env1, t_env2 *env2)
+void	ft_printf_wc(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	env2->wint = va_arg(env1->vl, wint_t);
 //	if (env2->wint <= -1 || env2->wint > 1114111)
@@ -72,7 +72,7 @@ void	ft_printf_C(const char *format, t_env1 *env1, t_env2 *env2)
 	ft_list_push_back(&env1->list, env2->str);
 }
 
-void	ft_printf_S(const char *format, t_env1 *env1, t_env2 *env2)
+void	ft_printf_ws(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	env2->wstr = va_arg(env1->vl, wchar_t *);
 	if (!env2->wstr)

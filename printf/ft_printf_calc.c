@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 00:34:12 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/20 23:08:56 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/21 05:51:46 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	printf_num(const char *format, t_env1 *env1, t_env2 *env2)
 		ft_printf_octal(env1, env2);
 	else if (ft_strchr("xX", format[env1->taille_f]))
 		ft_printf_hexa(format, env1, env2);
-	//else if (format[env1->taille_f] == 'p')
-	//	ft_printf_p(env1, env2);
 }
 
 void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
@@ -69,9 +67,9 @@ void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
 	if (env2->modif == L || ft_strchr("CS", format[env1->taille_f]))
 	{
 		if (ft_strchr("cC", format[env1->taille_f]))
-			ft_printf_C(format, env1, env2);
+			ft_printf_wc(format, env1, env2);
 		else if (ft_strchr("sS", format[env1->taille_f]))
-			ft_printf_S(format, env1, env2);
+			ft_printf_ws(format, env1, env2);
 	}
 	else
 	{
@@ -94,7 +92,6 @@ void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
 	{
 		env2->str = ft_strdup("%");
 		ft_print_string(format, env1, env2);
-		//ft_list_push_back(&env1->list, "%");
 	}
 	if (ft_strchr("idDoOuUxX", format[env1->taille_f]))
 		printf_num(format, env1, env2);
