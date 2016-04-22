@@ -15,6 +15,7 @@
 void	ft_precision(t_env2 *env2, int size_str)
 {
 	int i;
+	char *free_str;
 
 	env2->j = 0;
 	env2->tmp = ft_memalloc(env2->val_precision - size_str + 1);
@@ -23,7 +24,10 @@ void	ft_precision(t_env2 *env2, int size_str)
 		env2->tmp[env2->j] = '0';
 		env2->j++;
 	}
+	free_str = env2->str;
 	env2->str = ft_strjoin(env2->tmp, env2->str);
+	ft_memdel((void **)&free_str);
+	ft_memdel((void **)&env2->tmp);
 	if (env2->argument < 0)
 	{
 		i = 0;

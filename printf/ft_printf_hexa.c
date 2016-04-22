@@ -35,8 +35,13 @@ void	ft_calc_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 			ft_list_push_front(&env2->tmp1, env2->str);
 		}
 		else
-			ft_list_push_front(&env2->tmp1, ft_unsigned_long_itoa(env2->reste));
+		{
+			env2->tmp = ft_unsigned_long_itoa(env2->reste);
+			ft_list_push_front(&env2->tmp1, env2->tmp);
+			ft_memdel((void **)&env2->tmp);
+		}
 	}
+	ft_memdel((void **)&env2->str);
 }
 
 void	dieze_x_no_moins(t_env2 *env2, char *c)
@@ -94,22 +99,25 @@ void	foret_if_hexa(t_env2 *env2, unsigned long res_arg, char *c)
 
 void	ft_printf_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 {
-	int				i;
 	unsigned long	res_arg;
 	char			*c;
+	t_lst			*free_lst;
 
 	c = ft_strdup("0x");
 	if (format[env1->taille_f] == 'X')
 		c[1] = 'X';
-	i = 0;
 	res_arg = env2->argument1;
 	ft_calc_hexa(format, env1, env2);
 	env2->str = ft_strdup("\0");
+	free_lst = env2->tmp1;
 	while (env2->tmp1)
 	{
 		env2->str = ft_strjoin_free(env2->str, env2->str, env2->tmp1->str);
 		env2->tmp1 = env2->tmp1->next;
 	}
+	ft_free_list(free_lst);
 	foret_if_hexa(env2, res_arg, c);
 	ft_list_push_back(&env1->list, env2->str);
+	ft_memdel((void **)&env2->str);
+	ft_memdel((void **)&c);
 }

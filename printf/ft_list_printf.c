@@ -63,8 +63,8 @@ void	ft_free_list(t_lst *begin_list)
 	{
 		tmp = begin_list;
 		begin_list = begin_list->next;
-		free(tmp);
-		tmp = NULL;
+		ft_memdel((void **)&tmp->str);
+		ft_memdel((void **)&tmp);
 	}
 	begin_list = NULL;
 }

@@ -23,7 +23,7 @@ void	signed_conv(const char *format, t_env1 *env1, t_env2 *env2)
 	else if (env2->modif == LL)
 		env2->argument = va_arg(env1->vl, long long);
 	else if (env2->modif == J)
-		env2->argument = va_arg(env1->vl, intmax_t);
+		env2->argument = va_arg(env1->vl, long);
 	else if (env2->modif == Z)
 		env2->argument = va_arg(env1->vl, ssize_t);
 	else
@@ -41,7 +41,7 @@ void	unsigned_conv(const char *format, t_env1 *env1, t_env2 *env2)
 	else if (env2->modif == LL)
 		env2->argument1 = va_arg(env1->vl, unsigned long long);
 	else if (env2->modif == J)
-		env2->argument1 = va_arg(env1->vl, uintmax_t);
+		env2->argument1 = va_arg(env1->vl, unsigned long);
 	else if (env2->modif == Z)
 		env2->argument1 = va_arg(env1->vl, size_t);
 	else
@@ -67,7 +67,7 @@ void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
 	if (env2->modif == L || ft_strchr("CS", format[env1->taille_f]))
 	{
 		if (ft_strchr("cC", format[env1->taille_f]))
-			ft_printf_wc(format, env1, env2);
+			ft_printf_wc(env1, env2);
 		else if (ft_strchr("sS", format[env1->taille_f]))
 			ft_printf_ws(format, env1, env2);
 	}
@@ -77,7 +77,7 @@ void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
 			ft_printf_ch(env1, env2);
 		else if (format[env1->taille_f] == 's')
 		{
-			env2->str = va_arg(env1->vl, char *);
+			env2->str = ft_strdup(va_arg(env1->vl, char *));
 			ft_print_string(format, env1, env2);
 		}
 	}
@@ -90,7 +90,7 @@ void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
 	ft_modif_longueur(format, env1, env2);
 	if (format[env1->taille_f] == '%')
 	{
-		env2->str = ft_strdup_free(env2->str, "%");
+		env2->str = ft_strdup("%");
 		ft_print_string(format, env1, env2);
 	}
 	else if (ft_strchr("idDoOuUxX", format[env1->taille_f]))

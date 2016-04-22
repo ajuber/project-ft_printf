@@ -92,6 +92,8 @@ int		ft_printf(const char *format, ...)
 		env.tmp = env.tmp->next;
 	}
 	ft_putstr_size(env.str, env.taille);
+	ft_memdel((void **)&env.str);
 	va_end(env.vl);
+	ft_free_list(env.list);
 	return (env.taille);
 }
