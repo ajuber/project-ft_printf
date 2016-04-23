@@ -37,5 +37,6 @@ void	ft_printf_wint(t_env2 *env2, wint_t wint)
 		str[2] = ((wint & 0x0Fc0) >> 6) + 0x80;
 		str[3] = (wint & 0x003F) + 0x80;
 	}
-	env2->str = ft_strjoin(env2->str, str);
+	env2->str = ft_strjoin_free(env2->str, env2->str, str);
+	ft_memdel((void **)&str);
 }

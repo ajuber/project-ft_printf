@@ -70,6 +70,7 @@ void	ft_printf_wc(t_env1 *env1, t_env2 *env2)
 	else
 		ft_printf_ch_null(env1, env2);
 	ft_list_push_back(&env1->list, env2->str);
+	ft_memdel((void **)&env2->str);
 }
 
 void	ft_printf_ws(const char *format, t_env1 *env1, t_env2 *env2)
@@ -83,4 +84,5 @@ void	ft_printf_ws(const char *format, t_env1 *env1, t_env2 *env2)
 	}
 	print_wchar(env2, ft_wstrlen(env2->wstr));
 	ft_list_push_back(&env1->list, env2->str);
+	ft_memdel((void **)&env2->str);
 }

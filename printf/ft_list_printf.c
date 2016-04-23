@@ -20,7 +20,7 @@ t_lst	*new_lst(char *src)
 		return (NULL);
 	new->next = NULL;
 	new->str = ft_strdup(src);
-	new->size = ft_strlen(new->str);
+	new->size = (int)ft_strlen(new->str);
 	return (new);
 }
 

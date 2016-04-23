@@ -40,7 +40,7 @@ void	ft_printf_octal(t_env1 *env1, t_env2 *env2)
 	}
 	ft_free_list(free_lst);
 	if (res_arg == 0)
-		env2->str = ft_strdup("0");
+		env2->str = ft_strdup_free(env2->str, "0");
 	if ((size_t)env2->val_precision > ft_strlen(env2->str))
 	{
 		ft_precision(env2, ft_strlen(env2->str));
