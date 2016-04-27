@@ -80,7 +80,7 @@ void	foret_if_hexa(t_env2 *env2, unsigned long res_arg, char *c)
 	if (env2->dieze && res_arg != 0)
 	{
 		if (env2->test == 0)
-			env2->str = ft_strjoin(c, env2->str);
+			env2->str = ft_strjoin_free(env2->str, c, env2->str);
 		else
 		{
 			if (!env2->moins)

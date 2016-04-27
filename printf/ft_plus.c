@@ -18,7 +18,7 @@ void	ft_plus(t_env2 *env2)
 
 	i = 0;
 	if (env2->test == 0)
-		env2->str = ft_strjoin("+", env2->str);
+		env2->str = ft_strjoin_free(env2->str, "+", env2->str);
 	else
 	{
 		if (!env2->moins)
@@ -29,7 +29,7 @@ void	ft_plus(t_env2 *env2)
 		}
 		else
 		{
-			env2->str = ft_strjoin("+", env2->str);
+			env2->str = ft_strjoin_free(env2->str, "+", env2->str);
 			if (env2->test == 1)
 				env2->str[ft_strlen(env2->str) - 1] = 0;
 		}
