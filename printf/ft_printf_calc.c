@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 00:34:12 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 11:29:41 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/28 10:20:17 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	signed_conv(const char *format, t_env1 *env1, t_env2 *env2)
 	else if (env2->modif == LL)
 		env2->argument = va_arg(env1->vl, long long);
 	else if (env2->modif == J)
-		env2->argument = va_arg(env1->vl, long);
+		env2->argument = va_arg(env1->vl, intmax_t);
 	else if (env2->modif == Z)
 		env2->argument = va_arg(env1->vl, ssize_t);
 	else
@@ -41,7 +41,7 @@ void	unsigned_conv(const char *format, t_env1 *env1, t_env2 *env2)
 	else if (env2->modif == LL)
 		env2->argument1 = va_arg(env1->vl, unsigned long long);
 	else if (env2->modif == J)
-		env2->argument1 = va_arg(env1->vl, unsigned long);
+		env2->argument1 = va_arg(env1->vl, uintmax_t);
 	else if (env2->modif == Z)
 		env2->argument1 = va_arg(env1->vl, size_t);
 	else
@@ -62,12 +62,15 @@ void	printf_num(const char *format, t_env1 *env1, t_env2 *env2)
 		ft_printf_hexa(format, env1, env2);
 }
 
-void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
+int		printf_str(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	if (env2->modif == L || ft_strchr("CS", format[env1->taille_f]))
 	{
 		if (ft_strchr("cC", format[env1->taille_f]))
-			ft_printf_wc(env1, env2);
+		{
+			if (ft_printf_wc(env1, env2) == -1)
+				return (-1);
+		}
 		else if (ft_strchr("sS", format[env1->taille_f]))
 			ft_printf_ws(format, env1, env2);
 	}
@@ -81,9 +84,10 @@ void	printf_str(const char *format, t_env1 *env1, t_env2 *env2)
 			ft_print_string(format, env1, env2);
 		}
 	}
+	return (0);
 }
 
-void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
+int		ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	env1->taille_f += 1;
 	ft_before_modif_longueur(format, env1, env2);
@@ -98,5 +102,11 @@ void	ft_printf_calc(const char *format, t_env1 *env1, t_env2 *env2)
 	else if (format[env1->taille_f] == 'p')
 		ft_printf_p(env1, env2);
 	else if (ft_strchr("csCS", format[env1->taille_f]))
-		printf_str(format, env1, env2);
+	{
+		if (printf_str(format, env1, env2) == -1)
+			return (-1);
+	}
+	else
+		return (-1);
+	return (0);
 }

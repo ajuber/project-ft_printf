@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/21 06:14:46 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 08:56:58 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/28 10:22:51 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ int		count_wchar(const char *format, t_env1 *env1, t_env2 *env2, int *size)
 
 void	print_wchar(t_env2 *env2, int size)
 {
-//	int size_wchar;
 	int i;
 
-//	size_wchar = count_wchar(format, env1, env2, &size);
 	i = 0;
 	env2->str = ft_strdup("\0");
 	while (i < size)
@@ -56,13 +54,13 @@ void	print_wchar(t_env2 *env2, int size)
 	}
 }
 
-void	ft_printf_wc(t_env1 *env1, t_env2 *env2)
+int		ft_printf_wc(t_env1 *env1, t_env2 *env2)
 {
 	env2->wint = va_arg(env1->vl, wint_t);
 	if (env2->wint > 1114111)
-		ft_printf_error("Wrong wide char");
+		return (-1);
 	if (env2->wint > 55296 && env2->wint < 57343)
-		ft_printf_error("Wrong wide char");
+		return (-1);
 	env2->wchar = (wchar_t)env2->wint;
 	env2->wstr = &env2->wchar;
 	if (env2->wint != 0)
@@ -71,6 +69,7 @@ void	ft_printf_wc(t_env1 *env1, t_env2 *env2)
 		ft_printf_ch_null(env1, env2);
 	ft_list_push_back(&env1->list, env2->str);
 	ft_memdel((void **)&env2->str);
+	return (0);
 }
 
 void	ft_printf_ws(const char *format, t_env1 *env1, t_env2 *env2)
@@ -83,6 +82,5 @@ void	ft_printf_ws(const char *format, t_env1 *env1, t_env2 *env2)
 		return ;
 	}
 	print_wchar(env2, ft_wstrlen(env2->wstr));
-	ft_list_push_back(&env1->list, env2->str);
-	ft_memdel((void **)&env2->str);
+	ft_print_string(format, env1, env2);
 }

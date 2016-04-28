@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:42:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 10:39:12 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/28 10:16:47 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef enum		e_modif
 
 typedef struct		s_env2
 {
-	long			argument;
-	unsigned long	argument1;
+	intmax_t		argument;
+	uintmax_t		argument1;
 	wint_t			wint;
 	int				j;
 	char			*str;
@@ -52,10 +52,10 @@ typedef struct		s_env2
 	char			*tmp;
 	wchar_t			wchar;
 	wchar_t			*wstr;
-	unsigned long	result;
+	uintmax_t		result;
 	void			*quot_p;
 	unsigned long	quot_po;
-	unsigned long	reste;
+	uintmax_t		reste;
 	t_lst			*tmp1;
 	int				taille_min;
 	int				count_space;
@@ -86,10 +86,10 @@ void				ft_printf_ent(const char *format, t_env1 *env1,
 void				ft_printf_octal(t_env1 *env1, t_env2 *env2);
 void				ft_printf_hexa(const char *format, t_env1 *env1,
 		t_env2 *env2);
-void				ft_printf_calc(const char *format, t_env1 *env1,
+int					ft_printf_calc(const char *format, t_env1 *env1,
 		t_env2 *env2);
 void				ft_printf_p(t_env1 *env1, t_env2 *env2);
-void				ft_printf_wc(t_env1 *env1, t_env2 *env2);
+int					ft_printf_wc(t_env1 *env1, t_env2 *env2);
 void				ft_modif_longueur(const char *format, t_env1 *env1,
 		t_env2 *env2);
 void				ft_precision(t_env2 *env2, int size_str);

@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 16:23:15 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 11:21:50 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/28 10:07:09 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,17 @@ t_lst	*pre_calc(const char *format, t_env1 *env1)
 	free(env2.str);
 	env2.str = NULL;
 	if (format[env1->taille_f] == '%')
-		ft_printf_calc(format, env1, &env2);
+		if (ft_printf_calc(format, env1, &env2) == -1)
+			return (NULL);
 	return (env1->list);
 }
 
-void	ft_printf_under(const char *format, t_env1 *env)
+int		ft_printf_under(const char *format, t_env1 *env)
 {
 	while (env->nb_param > 0)
 	{
-		env->list = pre_calc(format, env);
+		if (!(env->list = pre_calc(format, env)))
+			return (-1);
 		if (format[env->taille_f] != '%')
 			env->nb_param--;
 		if (format[env->taille_f] != '\0')
@@ -66,10 +68,12 @@ void	ft_printf_under(const char *format, t_env1 *env)
 	}
 	while (format[env->taille_f] != '\0')
 	{
-		env->list = pre_calc(format, env);
+		if (!(env->list = pre_calc(format, env)))
+			return (-1);
 		if (format[env->taille_f] == '%')
 			env->taille_f++;
 	}
+	return (0);
 }
 
 int		ft_printf(const char *format, ...)
@@ -79,7 +83,8 @@ int		ft_printf(const char *format, ...)
 	ft_bzero(&env, sizeof(t_env1));
 	va_start(env.vl, format);
 	env.nb_param = count_param(format);
-	ft_printf_under(format, &env);
+	if (ft_printf_under(format, &env) == -1)
+		return (-1);
 	env.tmp = env.list;
 	env.str = ft_strdup("\0");
 	while (env.tmp)

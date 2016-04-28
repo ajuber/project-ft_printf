@@ -6,16 +6,22 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:53:21 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 10:28:58 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/28 10:35:16 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	ft_calc_hexa_else(t_env2 *env2)
+{
+	env2->tmp = ft_unsigned_long_itoa(env2->reste);
+	ft_list_push_front(&env2->tmp1, env2->tmp);
+	ft_memdel((void **)&env2->tmp);
+}
+
 void	ft_calc_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 {
 	env2->test = 1;
-	env2->tmp1 = NULL;
 	env2->str = ft_memalloc(2);
 	while (env2->argument1 > 0 || env2->test)
 	{
@@ -35,11 +41,7 @@ void	ft_calc_hexa(const char *format, t_env1 *env1, t_env2 *env2)
 			ft_list_push_front(&env2->tmp1, env2->str);
 		}
 		else
-		{
-			env2->tmp = ft_unsigned_long_itoa(env2->reste);
-			ft_list_push_front(&env2->tmp1, env2->tmp);
-			ft_memdel((void **)&env2->tmp);
-		}
+			ft_calc_hexa_else(env2);
 	}
 	ft_memdel((void **)&env2->str);
 }

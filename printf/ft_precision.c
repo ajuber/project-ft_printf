@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 20:21:30 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 11:13:06 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/23 22:51:42 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_precision(t_env2 *env2, int size_str)
 {
-	int i;
-	char *free_str;
+	int		i;
+	char	*free_str;
 
 	env2->j = 0;
 	env2->tmp = ft_memalloc(env2->val_precision - size_str + 1);
