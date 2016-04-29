@@ -6,40 +6,11 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/21 06:14:46 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/28 10:22:51 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/29 12:41:37 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		count_wchar(const char *format, t_env1 *env1, t_env2 *env2, int *size)
-{
-	int		i;
-	int		var;
-	int		res;
-
-	i = 0;
-	var = 0;
-	res = 0;
-	while (i < *size)
-	{
-		if (env2->wstr[i] <= 0x7F)
-			var = 1;
-		else if (env2->wstr[i] <= 0x7FF)
-			var = 2;
-		else if (env2->wstr[i] <= 0xFFFF)
-			var = 3;
-		else if (env2->wstr[i] <= 0x10FFFF)
-			var = 4;
-		if (env2->precision && format[env1->taille_f] == 'S'
-				&& (res + var) > env2->val_precision)
-			break ;
-		res += var;
-		i++;
-	}
-	*size = i;
-	return (res);
-}
 
 void	print_wchar(t_env2 *env2, int size)
 {

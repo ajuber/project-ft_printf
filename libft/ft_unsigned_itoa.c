@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 01:23:30 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 04:26:12 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/29 12:20:37 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	get_nb_char(unsigned int n, int *size)
 	}
 }
 
-static char	*exception(unsigned int n, char *result)
+static char	*exception(char *result)
 {
 	if (!(result = ft_memalloc(2)))
 		return (NULL);
@@ -41,7 +41,7 @@ char		*ft_unsigned_itoa(unsigned int n)
 	size = 0;
 	result = NULL;
 	if (n == 0)
-		return (exception(n, result));
+		return (exception(result));
 	get_nb_char(n, &size);
 	result = (char*)malloc(size + 1);
 	if (!result)

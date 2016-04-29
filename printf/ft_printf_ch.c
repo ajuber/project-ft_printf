@@ -6,26 +6,11 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 23:06:13 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/21 04:12:37 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/29 12:42:27 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_taille_min_ch(t_env2 *env2)
-{
-	env2->j = 0;
-	env2->tmp = ft_memalloc(env2->taille_min);
-	while (env2->j < env2->taille_min - 1)
-	{
-		env2->tmp[env2->j] = ' ';
-		env2->j++;
-	}
-	if (env2->moins)
-		env2->str = ft_strjoin(env2->str, env2->tmp);
-	else
-		env2->str = ft_strjoin(env2->tmp, env2->str);
-}
 
 void	ft_taille_min_no_moins(t_env2 *env2)
 {

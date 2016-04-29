@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 16:33:50 by ajubert           #+#    #+#              #
-#    Updated: 2016/04/21 09:46:59 by ajubert          ###   ########.fr        #
+#    Updated: 2016/04/29 12:34:25 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,6 @@ PRINTF_CMP = ft_printf.o\
 			ft_printf_p.o\
 			ft_list_printf.o\
 			ft_flags.o\
-			ft_init_env_printf.o\
 			ft_before_modif_longueur.o\
 			ft_printf_ch.o\
 			ft_print_string.o\
@@ -113,8 +112,7 @@ PRINTF_CMP = ft_printf.o\
 			ft_taille_min.o\
 			ft_plus.o\
 			ft_printf_wint.o\
-			ft_printf_wc.o\
-			ft_printf_error.o
+			ft_printf_wc.o
 
 COMPIL =		$(FT_COMPILED) $(PRINTF_CMP)
 
