@@ -51,7 +51,10 @@ t_lst	*pre_calc(const char *format, t_env1 *env1)
 	env2.str = NULL;
 	if (format[env1->taille_f] == '%')
 		if (ft_printf_calc(format, env1, &env2) == -1)
+		{
+			ft_free_list(env1->list);
 			return (NULL);
+		}
 	return (env1->list);
 }
 
